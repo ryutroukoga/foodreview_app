@@ -1,34 +1,44 @@
-@extends('layout.layout')
+@extends('layouts.layout')
 
 @section('content')
 <div class="container">
   <div class="row justify-content-center">
     <div class="col col-md-offset-3 col-md-6">
       <nav class="card mt-5">
-        <div class="card-header text-center">ログイン</div>
+        <div class="card">
+          <div class="card-title text-center large-text">ログイン</div>
+        </div>
         <div class="card-body">
-          @if($errors->any())
-          <div class="alert alert-danger">
-            @foreach($errors->all() as $message)
-            <p>{{ $message }}</p>
-            @endforeach
-          </div>
-          @endif
-          <form action="{{ route('login') }}" method="POST">
+          <form action="{{ route('home') }}" method="POST">
             @csrf
-            <div class="form-group">
-              <label for="email">メールアドレス</label>
-              <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" />
+            <div class="d-flex justify-content-around">
+              <label for="email" class="col-sm-2 col-form-label no-wrap">メールアドレス</label>
+              <div class="col-sm-8">
+                <input type="text" class="form-control" id="email" name="email" value="{{ old('email') }}" required />
+              </div>
             </div>
-            <div class="form-group mt-3">
-              <label for="password">パスワード</label>
-              <input type="password" class="form-control" id="password" name="password" />
+            <br>
+            <div class="d-flex justify-content-around">
+              <label for="password" class="col-sm-2 col-form-label no-wrap">パスワード</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control" id="password" name="password" required />
+              </div>
             </div>
-            <div class="text-center mt-3">
-              <a href="{{ route('password.request') }}">パスワード忘れた方はこちら</a>
+            <br>
+            <div class="text-right">
+              <a href="{{ route('password.reset') }}">パスワード忘れた方はこちら</a>
             </div>
-            <div class="text-center mt-3">
-              <button type="submit" class="btn btn-primary">送信</button>
+            <br>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">ログイン</button>
+            </div>
+            <br>
+            <div class="text-center">
+              <a href="{{ route('sign.new') }}" class="btn btn-primary">新規登録</a>
+            </div>
+            <br>
+            <div class="text-right">
+              <a href="{{ route('home') }}">ログインせずに始める</a>
             </div>
           </form>
         </div>
