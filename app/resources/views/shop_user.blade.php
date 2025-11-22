@@ -1,49 +1,83 @@
 @extends('layout.layout')
-@section('content')
 
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col col-md-offset-3 col-md-6">
-            <div class="mb-3">
-                <h1 class="text-center">店舗アカウント新規登録画面</h1>
+@section('content')
+<div class="marble-bg marble-overlay">
+    <div class="container">
+        <div class="row justify-content-center align-items-center auth-container-marble">
+            <div class="col-md-8 col-lg-6">
+
+                <div class="text-center mb-5">
+                    <h2 class="page-title-marble">
+                        <i class="bi bi-shop-window"></i> Shop Registration
+                    </h2>
+                    <p class="page-description-marble">
+                        店舗アカウント新規登録
+                    </p>
+                </div>
+
+                <div class="card-marble">
+                    <div class="card-body p-5">
+
+                        @if($errors->any())
+                        <div class="alert-marble-danger">
+                            <p class="mb-2"><i class="bi bi-exclamation-triangle-fill"></i> 入力内容をご確認ください</p>
+                            <ul class="mb-0 ps-3">
+                                @foreach($errors->all() as $message)
+                                <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @endif
+
+                        <form action="{{ route('shop.logincon') }}" method="POST">
+                            @csrf
+
+                            <div class="form-group-marble">
+                                <label for="name" class="form-label-marble">
+                                    <i class="bi bi-person-badge"></i> ユーザー名
+                                </label>
+                                <input type="text" class="form-control-marble" id="name" name="name" placeholder="店舗名または担当者名" />
+                            </div>
+
+                            <div class="form-group-marble">
+                                <label for="email" class="form-label-marble">
+                                    <i class="bi bi-envelope"></i> メールアドレス
+                                </label>
+                                <input type="text" class="form-control-marble" id="email" name="email" placeholder="example@email.com" />
+                            </div>
+
+                            <div class="form-group-marble">
+                                <label for="password" class="form-label-marble">
+                                    <i class="bi bi-key"></i> パスワード
+                                </label>
+                                <input type="password" class="form-control-marble" id="password" name="password" placeholder="パスワードを入力" />
+                            </div>
+
+                            <div class="form-group-marble">
+                                <label for="password-confirm" class="form-label-marble">
+                                    <i class="bi bi-check-circle"></i> パスワード（確認）
+                                </label>
+                                <input type="password" class="form-control-marble" id="password-confirm" name="password_confirmation" placeholder="もう一度入力してください" />
+                            </div>
+
+                            <div class="text-center mt-5">
+                                <button type="submit" class="btn-marble-submit w-100">
+                                    <i class="bi bi-box-arrow-in-up"></i> 登　録
+                                </button>
+                            </div>
+
+                            <div class="text-center mt-4">
+                                <a href="{{ route('shop.login') }}" class="back-link-marble text-small-marble">
+                                    <i class="bi bi-arrow-left"></i> 店舗ログイン画面に戻る
+                                </a>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
             </div>
-            @if($errors->any())
-            <div class="alert alert-danger">
-                @foreach($errors->all() as $message)
-                <p>{{ $message }}</p>
-                @endforeach
-            </div>
-            @endif
-            <form action="{{ route('shop.logincon') }}" method="POST">
-                @csrf
-                <div class="form-group">
-                    <div class="mb-3">
-                        <label for="password">ユーザー名</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="ユーザー名">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="mb-3">
-                        <label for="email">メールアドレス</label>
-                        <input type="text" class="form-control" id="email" name="email" placeholder="メールアドレス">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="mb-3">
-                        <label for="password">パスワード</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="パスワード入力">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="password-confirm">パスワード再入力</label>
-                    <input type="password" class="form-control" id="password-confirm" name="password_confirmation" placeholder="パスワード再度入力">
-                </div>
-                <div class="text-center">
-                    <div class="mb-3">
-                        <button type="submit" class="btn btn-primary">登録</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </div>
-    @endsection
+</div>
+@endsection
