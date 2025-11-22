@@ -1,77 +1,85 @@
 @extends('layout.layout')
 @section('content')
-<main>
-    @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-    @endif
-    <h1 class="text-center">プロフィール</h1>
-    <div class="d-flex justify-content-evenly">
-        <div class="col col-md-offset-2 col-md-3">
-            <table class='table'>
-                <tbody>
-                    <tr>
-                        <th scope="col">ユーザー名　:　{{ Auth::user()->name }}</th>
-                    </tr>
-                    <tr>
-                        <th scope="col">メールアドレス　:　{{ Auth::user()->email }}</th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="align-self-center">
-            <table class='table table-borderless'>
-                <tbody>
-                    <tr>
-                        <th>
-                            <a href="{{ route('profileuser') }}">
-                                <button type="button" class="btn btn-primary btn-sm">プロフィール編集</button>
-                            </a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <a href="{{ route('userprofile') }}">
-                                <button type="button" class="btn btn-primary btn-sm">メールアドレス編集・退会</button>
-                            </a>
-                        </th>
-                    </tr>
-                    <tr>
-                        <th>
-                            <a href="{{ route('book') }}">
-                                <button type="button" class="btn btn-primary btn-sm">ブックマーク画面</button>
-                            </a>
-                        </th>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
 
-    <h5>過去の投稿一覧</h5>
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        @foreach($reviews as $review)
-        <div class="col">
-            <div class="card" style="width: 18rem;">
-                <img src="{{ asset('storage/' . $review->image) }}" class="card-img-top img-fluid img-thumbnail" alt="画像なし">
-                <div class="card-body">
-                    <input type="hidden" class="review-id" value="{{ $review['id'] }}">
-                    <p class="card-text">
-                        評価：{{ $review['score'] }}<br>
-                        タイトル：{{ $review['title'] }}<br>
-                        <a href="{{ route('reviewdetail',['reviewdetail' => $review['id']]) }}">詳細</a>
-                        <button type="button" class="btn bookmark-btn {{ $review->bookmarked ? 'bookmarked' : '' }}">
-                            <i class="bi {{ $review->bookmarked ? 'bi-star-fill' : 'bi-star' }}"></i>
-                        </button>
-                    </p>
+<main class="profile-section">
+    <div class="container">
+        @if (session('success'))
+        <div class="alert-marble-success">
+            <i class="bi bi-check-circle me-2"></i>{{ session('success') }}
+        </div>
+        @endif
+
+        <div class="text-center">
+            <h1 class="profile-title">プロフィール</h1>
+        </div>
+
+        <div class="row justify-content-center g-4 mt-2">
+            <!-- プロフィール情報 -->
+            <div class="col-md-5">
+                <div class="profile-card">
+                    <div class="profile-icon">
+                        <i class="bi bi-person"></i>
+                    </div>
+                    <div class="text-center">
+                        <div class="profile-info-label">ユーザー名</div>
+                        <div class="profile-info-value">{{ Auth::user()->name }}</div>
+
+                        <div class="profile-info-label">メールアドレス</div>
+                        <div class="profile-info-value">{{ Auth::user()->email }}</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- アクションボタン -->
+            <div class="col-md-4">
+                <div class="action-card">
+                    <a href="{{ route('profileuser') }}" class="btn-marble-outline">
+                        <i class="bi bi-pencil"></i>プロフィール編集
+                    </a>
+                    <a href="{{ route('userprofile') }}" class="btn-marble-outline">
+                        <i class="bi bi-envelope"></i>メールアドレス編集・退会
+                    </a>
+                    <a href="{{ route('book') }}" class="btn-marble-outline">
+                        <i class="bi bi-bookmark"></i>ブックマーク一覧
+                    </a>
                 </div>
             </div>
         </div>
-        @endforeach
-    </div>
-    <div class="d-flex justify-content-center">
-        {{ $reviews->links() }}
+
+        <!-- 過去の投稿一覧 -->
+        <h5 class="section-subtitle"><i class="bi bi-clock-history me-2"></i>過去の投稿一覧</h5>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            @foreach($reviews as $review)
+            <div class="col">
+                <div class="review-card-marble">
+                    <img src="{{ asset('storage/' . $review->image) }}" class="card-img-top" alt="レビュー画像">
+                    <div class="card-body">
+                        <input type="hidden" class="review-id" value="{{ $review['id'] }}">
+
+                        <div class="review-score">
+                            <i class="bi bi-star-fill"></i>{{ $review['score'] }} 点
+                        </div>
+
+                        <div class="review-title-text">{{ $review['title'] }}</div>
+
+                        <div class="review-actions">
+                            <a href="{{ route('reviewdetail',['reviewdetail' => $review['id']]) }}" class="detail-link-marble">
+                                詳細を見る
+                            </a>
+                            <button type="button" class="bookmark-btn-marble bookmark-btn {{ $review->bookmarked ? 'bookmarked' : '' }}">
+                                <i class="bi {{ $review->bookmarked ? 'bi-star-fill' : 'bi-star' }}"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        <div class="d-flex justify-content-center pagination-marble">
+            {{ $reviews->links() }}
+        </div>
     </div>
 </main>
 @endsection

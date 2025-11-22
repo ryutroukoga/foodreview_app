@@ -9,3 +9,1233 @@
 .bookmark-btn.bookmarked {
     color: yellow;
 }
+
+/* ============================================
+   大理石風デザイン - app.css
+   ============================================ */
+
+/* --------------------------------------------
+   基本設定・共通スタイル
+   -------------------------------------------- */
+body {
+    font-family: 'Noto Serif JP', 'Nunito', serif;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 25%, #f0f0f0 50%, #e0e0e0 75%, #f5f5f5 100%);
+    background-size: 400% 400%;
+    animation: marble-shift 15s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes marble-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* --------------------------------------------
+   ナビゲーションバー
+   -------------------------------------------- */
+.navbar-marble {
+    background: linear-gradient(135deg, #2c2c2c 0%, #3d3d3d 25%, #4a4a4a 50%, #3d3d3d 75%, #2c2c2c 100%);
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #8b7355, #c4a77d, #d4b896, #c4a77d, #8b7355) 1;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.3),
+        0 1px 3px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    padding: 1rem 0;
+    position: relative;
+}
+
+.navbar-marble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.03' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    pointer-events: none;
+}
+
+.navbar-marble .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ブランドロゴ */
+.navbar-brand-marble {
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #f0e6d8;
+    text-decoration: none;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.navbar-brand-marble::before {
+    content: '◇';
+    margin-right: 10px;
+    color: #c4a77d;
+    font-size: 0.8rem;
+}
+
+.navbar-brand-marble::after {
+    content: '◇';
+    margin-left: 10px;
+    color: #c4a77d;
+    font-size: 0.8rem;
+}
+
+.navbar-brand-marble:hover {
+    color: #c4a77d;
+}
+
+/* ユーザー名 */
+.user-name-marble {
+    color: #c4a77d;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(145deg, rgba(196, 167, 125, 0.15), rgba(139, 115, 85, 0.15));
+    border-radius: 25px;
+    border: 1px solid rgba(196, 167, 125, 0.3);
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.user-name-marble::before {
+    content: '●';
+    font-size: 0.5rem;
+    margin-right: 8px;
+    color: #c4a77d;
+}
+
+/* ナビゲーションリンク */
+.nav-marble {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link-marble {
+    color: #d0d0d0;
+    text-decoration: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link-marble::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #c4a77d, #d4b896);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link-marble:hover {
+    color: #c4a77d;
+    background: rgba(196, 167, 125, 0.1);
+}
+
+.nav-link-marble:hover::before {
+    width: 80%;
+}
+
+/* ログアウトボタン */
+.logout-link-marble {
+    color: #c4a77d;
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    border: 2px solid #c4a77d;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    margin-left: 0.5rem;
+}
+
+.logout-link-marble:hover {
+    background: linear-gradient(145deg, #c4a77d, #8b7355);
+    color: #2c2c2c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(196, 167, 125, 0.4);
+}
+
+/* 新規登録ボタン */
+.register-link-marble {
+    background: linear-gradient(145deg, #c4a77d, #8b7355);
+    color: #2c2c2c;
+    text-decoration: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(196, 167, 125, 0.3);
+}
+
+.register-link-marble:hover {
+    background: linear-gradient(145deg, #d4b896, #c4a77d);
+    color: #2c2c2c;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(196, 167, 125, 0.5);
+}
+
+/* --------------------------------------------
+   共通タイトルスタイル
+   -------------------------------------------- */
+.page-title-marble {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #4a4a4a;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.page-title-marble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c4a77d, #8b7355, #c4a77d, transparent);
+}
+
+.page-title-marble i {
+    color: #c4a77d;
+    margin-right: 10px;
+}
+
+.section-subtitle {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #4a4a4a;
+    letter-spacing: 2px;
+    margin: 3rem 0 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #8b7355, #c4a77d, transparent) 1;
+}
+
+/* --------------------------------------------
+   共通カードスタイル
+   -------------------------------------------- */
+.card-marble {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.1),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-marble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8b7355, #c4a77d, #d4b896, #c4a77d, #8b7355);
+}
+
+/* 危険カード（退会用など） */
+.card-marble-danger {
+    background: linear-gradient(145deg, #ffffff 0%, #faf8f8 50%, #f5f0f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 180, 180, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.08),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-marble-danger::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #a08080, #c4a0a0, #d4b0b0, #c4a0a0, #a08080);
+}
+
+/* --------------------------------------------
+   共通ボタンスタイル
+   -------------------------------------------- */
+.btn-marble {
+    background: linear-gradient(145deg, #8b7355, #6b5344);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-marble:hover {
+    background: linear-gradient(145deg, #9b8365, #7b6354);
+    transform: translateY(-2px);
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+    color: white;
+}
+
+.btn-marble-submit {
+    display: inline-block;
+    background: linear-gradient(145deg, #8b7355, #6b5344);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 15px rgba(139, 115, 85, 0.3);
+}
+
+.btn-marble-submit:hover {
+    background: linear-gradient(145deg, #9b8365, #7b6354);
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 20px rgba(139, 115, 85, 0.4);
+}
+
+.btn-marble-submit i {
+    margin-right: 8px;
+}
+
+.btn-marble-outline {
+    display: block;
+    width: 100%;
+    background: transparent;
+    color: #8b7355;
+    border: 2px solid #8b7355;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.3s ease;
+    margin-bottom: 1rem;
+}
+
+.btn-marble-outline:last-child {
+    margin-bottom: 0;
+}
+
+.btn-marble-outline:hover {
+    background: linear-gradient(145deg, #8b7355, #6b5344);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(139, 115, 85, 0.3);
+}
+
+.btn-marble-outline i {
+    margin-right: 8px;
+}
+
+.btn-marble-danger {
+    display: inline-block;
+    background: linear-gradient(145deg, #a08080, #8b6b6b);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.8rem 2.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 4px 4px 15px rgba(139, 100, 100, 0.25);
+}
+
+.btn-marble-danger:hover {
+    background: linear-gradient(145deg, #b09090, #9b7b7b);
+    transform: translateY(-3px);
+    box-shadow: 6px 6px 20px rgba(139, 100, 100, 0.35);
+}
+
+.btn-marble-danger i {
+    margin-right: 8px;
+}
+
+/* --------------------------------------------
+   共通フォームスタイル
+   -------------------------------------------- */
+.form-group-marble {
+    margin-bottom: 1.8rem;
+}
+
+.form-label-marble {
+    display: block;
+    color: #8b7355;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.6rem;
+}
+
+.form-control-marble {
+    width: 100%;
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
+    border: 1px solid #d0d0d0;
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.form-control-marble:focus {
+    outline: none;
+    border-color: #c4a77d;
+    box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.03),
+        0 0 0 3px rgba(196, 167, 125, 0.15);
+}
+
+.form-control-marble::placeholder {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.form-hint {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 0.5rem;
+}
+
+.form-hint i {
+    margin-right: 5px;
+    color: #c4a77d;
+}
+
+.form-separator {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #d0d0d0, transparent);
+    margin: 2rem 0;
+}
+
+.separator-label {
+    text-align: center;
+    color: #888;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: -0.8rem;
+    position: relative;
+}
+
+.separator-label span {
+    background: #f8f8f8;
+    padding: 0 1rem;
+}
+
+/* --------------------------------------------
+   共通アラートスタイル
+   -------------------------------------------- */
+.alert-marble-success {
+    background: linear-gradient(145deg, #d4edda, #c3e6cb);
+    border: 1px solid #a8d5ae;
+    border-radius: 12px;
+    color: #155724;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.alert-marble-danger {
+    background: linear-gradient(145deg, #f8d7da, #f5c6cb);
+    border: 1px solid #d4a5a5;
+    border-radius: 12px;
+    color: #721c24;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.08);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.alert-marble-danger p {
+    margin: 0.3rem 0;
+    font-size: 0.9rem;
+}
+
+.alert-marble-danger p::before {
+    content: '•';
+    margin-right: 8px;
+    color: #c4a5a5;
+}
+
+/* --------------------------------------------
+   共通リンクスタイル
+   -------------------------------------------- */
+.back-link-marble {
+    display: inline-flex;
+    align-items: center;
+    color: #8b7355;
+    text-decoration: none;
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.back-link-marble i {
+    margin-right: 6px;
+}
+
+.back-link-marble:hover {
+    background: rgba(139, 115, 85, 0.1);
+    color: #6b5344;
+}
+
+.detail-link-marble {
+    color: #8b7355;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+    border: 1px solid #8b7355;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.detail-link-marble:hover {
+    background: linear-gradient(145deg, #8b7355, #6b5344);
+    color: white;
+}
+
+/* --------------------------------------------
+   共通ページネーション
+   -------------------------------------------- */
+.pagination-marble .page-link {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border: 1px solid #d0d0d0;
+    color: #8b7355;
+    margin: 0 3px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.pagination-marble .page-link:hover {
+    background: linear-gradient(145deg, #8b7355, #6b5344);
+    color: white;
+    border-color: #8b7355;
+}
+
+.pagination-marble .page-item.active .page-link {
+    background: linear-gradient(145deg, #8b7355, #6b5344);
+    border-color: #8b7355;
+    color: white;
+}
+
+/* --------------------------------------------
+   メインページ（検索・レビュー一覧）
+   -------------------------------------------- */
+.marble-bg {
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 25%, #f0f0f0 50%, #e0e0e0 75%, #f5f5f5 100%);
+    background-size: 400% 400%;
+    animation: marble-shift 15s ease infinite;
+    min-height: 100vh;
+}
+
+.marble-overlay {
+    position: relative;
+}
+
+.marble-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+/* 検索コンテナ */
+.search-container {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 245, 0.9));
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow:
+        8px 8px 20px rgba(0, 0, 0, 0.1),
+        -8px -8px 20px rgba(255, 255, 255, 0.8),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(200, 200, 200, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.search-container input,
+.search-container select {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    padding: 12px 16px;
+    transition: all 0.3s ease;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.search-container input:focus,
+.search-container select:focus {
+    outline: none;
+    border-color: #8b7355;
+    box-shadow:
+        inset 2px 2px 5px rgba(0, 0, 0, 0.05),
+        0 0 10px rgba(139, 115, 85, 0.2);
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #4a4a4a;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #8b7355, transparent);
+}
+
+/* レビューカード（メインページ用） */
+.marble-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.1),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    transition: all 0.4s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.marble-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8b7355, #c4a77d, #8b7355);
+}
+
+.marble-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        15px 15px 40px rgba(0, 0, 0, 0.15),
+        -8px -8px 25px rgba(255, 255, 255, 0.9);
+}
+
+.marble-card .card-body {
+    padding: 1.5rem;
+}
+
+.score-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(145deg, #c4a77d, #8b7355);
+    color: white;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+.card-label {
+    color: #8b7355;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.25rem;
+}
+
+.card-value {
+    color: #333;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.detail-link {
+    display: inline-block;
+    color: #8b7355;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 20px;
+    border: 2px solid #8b7355;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.detail-link:hover {
+    background: linear-gradient(145deg, #8b7355, #6b5344);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* --------------------------------------------
+   プロフィールページ
+   -------------------------------------------- */
+.profile-section {
+    padding: 3rem 0;
+}
+
+.profile-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #4a4a4a;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.profile-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c4a77d, #8b7355, #c4a77d, transparent);
+}
+
+.profile-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.1),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, #8b7355, #c4a77d, #d4b896, #c4a77d, #8b7355);
+}
+
+.profile-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(145deg, #c4a77d, #8b7355);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    box-shadow: 4px 4px 15px rgba(139, 115, 85, 0.3);
+}
+
+.profile-icon i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.profile-info-label {
+    color: #8b7355;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.3rem;
+}
+
+.profile-info-value {
+    color: #333;
+    font-size: 1.1rem;
+    font-weight: 400;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.profile-info-value:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.action-card {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.1),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+}
+
+/* レビューカード（プロフィール用） */
+.review-card-marble {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow:
+        8px 8px 25px rgba(0, 0, 0, 0.08),
+        -4px -4px 15px rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    height: 100%;
+}
+
+.review-card-marble:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        12px 12px 35px rgba(0, 0, 0, 0.12),
+        -6px -6px 20px rgba(255, 255, 255, 0.9);
+}
+
+.review-card-marble .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #8b7355, #c4a77d, #8b7355) 1;
+}
+
+.review-card-marble .card-body {
+    padding: 1.5rem;
+}
+
+.review-score {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #c4a77d, #8b7355);
+    color: white;
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    box-shadow: 2px 2px 8px rgba(139, 115, 85, 0.3);
+}
+
+.review-score i {
+    margin-right: 5px;
+}
+
+.review-title-text {
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.review-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.bookmark-btn-marble {
+    background: transparent;
+    border: none;
+    font-size: 1.4rem;
+    color: #c4a77d;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.3rem;
+}
+
+.bookmark-btn-marble:hover {
+    transform: scale(1.2);
+}
+
+.bookmark-btn-marble.bookmarked {
+    color: #8b7355;
+}
+
+/* --------------------------------------------
+   ブックマークページ
+   -------------------------------------------- */
+.bookmark-section {
+    padding: 3rem 0;
+}
+
+.bookmark-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: #4a4a4a;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.bookmark-title::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c4a77d, #8b7355, #c4a77d, transparent);
+}
+
+.bookmark-title i {
+    color: #c4a77d;
+    margin-right: 10px;
+}
+
+.bookmark-count {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(145deg, rgba(196, 167, 125, 0.15), rgba(139, 115, 85, 0.1));
+    color: #8b7355;
+    padding: 0.5rem 1.2rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(196, 167, 125, 0.3);
+}
+
+.bookmark-count i {
+    margin-right: 8px;
+}
+
+/* テーブルコンテナ */
+.table-container {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.1),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    position: relative;
+}
+
+.table-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8b7355, #c4a77d, #d4b896, #c4a77d, #8b7355);
+}
+
+/* テーブルスタイル */
+.table-marble {
+    margin: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-marble thead {
+    background: linear-gradient(145deg, #3d3d3d, #2c2c2c);
+}
+
+.table-marble thead th {
+    color: #f0e6d8;
+    font-family: 'Noto Serif JP', serif;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 1.2rem 1.5rem;
+    border: none;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(90deg, #8b7355, #c4a77d, #8b7355) 1;
+}
+
+.table-marble thead th:first-child {
+    text-align: center;
+    width: 60px;
+}
+
+.table-marble tbody tr {
+    transition: all 0.3s ease;
+}
+
+.table-marble tbody tr:hover {
+    background: linear-gradient(145deg, rgba(196, 167, 125, 0.08), rgba(139, 115, 85, 0.05));
+}
+
+.table-marble tbody td {
+    padding: 1.2rem 1.5rem;
+    border: none;
+    border-bottom: 1px solid rgba(200, 200, 200, 0.3);
+    color: #333;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.table-marble tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.bookmark-star {
+    color: #c4a77d;
+    font-size: 1.4rem;
+    text-align: center;
+    text-shadow: 1px 1px 3px rgba(139, 115, 85, 0.3);
+    transition: all 0.3s ease;
+}
+
+.table-marble tbody tr:hover .bookmark-star {
+    color: #8b7355;
+    transform: scale(1.2);
+}
+
+.shop-name {
+    color: #4a4a4a;
+    font-weight: 500;
+}
+
+.shop-address {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.review-title {
+    color: #333;
+}
+
+.empty-bookmark {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #888;
+}
+
+.empty-bookmark i {
+    font-size: 4rem;
+    color: #c4a77d;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-bookmark p {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+/* --------------------------------------------
+   プロフィール編集ページ
+   -------------------------------------------- */
+.profile-edit-section {
+    padding: 3rem 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.profile-edit-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.8rem;
+    font-weight: 300;
+    color: #4a4a4a;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.profile-edit-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c4a77d, #8b7355, #c4a77d, transparent);
+}
+
+.profile-edit-title i {
+    color: #c4a77d;
+    margin-right: 10px;
+}
+
+/* --------------------------------------------
+   メールアドレス編集・退会ページ
+   -------------------------------------------- */
+.email-edit-section {
+    padding: 3rem 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+.email-edit-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    color: #4a4a4a;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.email-edit-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c4a77d, #8b7355, #c4a77d, transparent);
+}
+
+.email-edit-title i {
+    color: #c4a77d;
+    margin-right: 10px;
+}
+
+.danger-title {
+    font-family: 'Noto Serif JP', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #8b6b6b;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.danger-title i {
+    margin-right: 8px;
+}
+
+.danger-description {
+    font-size: 0.85rem;
+    color: #888;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------
+   フォームカード（共通）
+   -------------------------------------------- */
+.form-card-marble {
+    background: linear-gradient(145deg, #ffffff 0%, #f8f8f8 50%, #f0f0f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 200, 200, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.1),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.form-card-marble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #8b7355, #c4a77d, #d4b896, #c4a77d, #8b7355);
+}
+
+.danger-card-marble {
+    background: linear-gradient(145deg, #ffffff 0%, #faf8f8 50%, #f5f0f0 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(200, 180, 180, 0.4);
+    box-shadow:
+        10px 10px 30px rgba(0, 0, 0, 0.08),
+        -5px -5px 20px rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+.danger-card-marble::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #a08080, #c4a0a0, #d4b0b0, #c4a0a0, #a08080);
+}

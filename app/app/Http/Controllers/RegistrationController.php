@@ -192,7 +192,7 @@ class RegistrationController extends Controller
         if ($request->user()->role == 0) {
             return redirect()->route('shopdetail', ['shopdetail' => $request->shop_id]);
         } else {
-        
+
             return redirect()->route('shop.review', ['shopdetail' => $request->shop_id]);
         }
     }

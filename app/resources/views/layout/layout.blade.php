@@ -14,6 +14,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,22 +24,22 @@
 
 <body>
     <div id="app">
-        <nav class="navbar" style="background-color: #e3f2fd;">
+        <nav class="navbar navbar-marble">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand-marble" href="{{ url('/') }}">
                     飲食店レビューサイト
                 </a>
                 @if(Auth::check())
-                <ul class="nav justify-content-end">
-                    <span class="fs-4">{{ Auth::user()->name }}</span>
+                <ul class="nav nav-marble">
+                    <span class="user-name-marble">{{ Auth::user()->name }}</span>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('mainpage') }}">メインページへ</a>
+                        <a class="nav-link-marble" href="{{ route('mainpage') }}">メインページへ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile') }}">プロフィールへ</a>
+                        <a class="nav-link-marble" href="{{ route('profile') }}">プロフィールへ</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" id="logout" class="nav-link">ログアウト</a>
+                        <a href="#" id="logout" class="logout-link-marble">ログアウト</a>
                     </li>
                 </ul>
                 <form action="{{ route('logout') }}" id="logout-form" method="POST" style="display: none;">
@@ -52,18 +53,18 @@
                 </script>
                 @else
 
-                <ul class="nav justify-content-end">
+                <ul class="nav nav-marble">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('mainpage') }}">メインページへ</a>
+                        <a class="nav-link-marble" href="{{ route('mainpage') }}">メインページへ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">ログイン</a>
+                        <a class="nav-link-marble" href="{{ route('login') }}">ログイン</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register')}}">新規会員登録</a>
+                        <a class="register-link-marble" href="{{ route('register')}}">新規会員登録</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('shop.login') }}">店舗アカウント新規登録画面</a>
+                        <a class="nav-link-marble" href="{{ route('shop.login') }}">店舗アカウント</a>
                     </li>
                 </ul>
                 @endif
